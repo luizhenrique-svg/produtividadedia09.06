@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Produtividade Diária (09/06) - Monteiro Nascimento Advogados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-serif-brand {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 280px;
+            width: 100%;
+        }
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-card {
+                border: 1px solid #e2e8f0 !important;
+                box-shadow: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#fcfbfb] text-stone-800 min-h-screen flex flex-col antialiased">
+
+    <header class="bg-white border-b-2 border-[#720917] shadow-sm sticky top-0 z-40 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center">
+                        <img id="main-corporate-logo" src="logo_mn.png" alt="Monteiro Nascimento Advogados" class="h-16 w-auto object-contain" onerror="this.style.display='none'; document.getElementById('svg-logo-fallback').classList.remove('hidden');">
+                        
+                        <div id="svg-logo-fallback" class="hidden flex items-center space-x-3">
+                            <svg class="w-12 h-12 text-[#720917]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="50" cy="50" r="38" stroke="currentColor" stroke-width="5" fill="none"/>
+                                <rect x="33" y="27" width="7" height="46" rx="3.5" fill="currentColor"/>
+                                <rect x="60" y="27" width="7" height="46" rx="3.5" fill="currentColor"/>
+                                <path d="M40 38 C46 38, 54 62, 60 62" stroke="currentColor" stroke-width="7" stroke-linecap="round" fill="none"/>
+                            </svg>
+                            <div class="flex flex-col">
+                                <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-[#720917] font-serif-brand lowercase leading-none">monteiro nascimento</h1>
+                                <p class="text-[8px] sm:text-[9px] text-stone-500 uppercase tracking-[0.45em] font-sans font-extrabold mt-1">advogados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-4 text-right">
+                    <div class="border-l border-stone-200 pl-4 hidden sm:block">
+                        <p class="text-[10px] text-stone-400 uppercase tracking-wider">Unidade Federativa</p>
+                        <p class="text-xs font-bold text-stone-700">Base Sergipe (SE)</p>
+                    </div>
+                    <div class="border-l border-stone-200 pl-4">
+                        <p class="text-[10px] text-stone-400 uppercase tracking-wider">Data de Competência</p>
+                        <p class="text-xs font-bold text-[#720917]">09 de Junho de 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <div class="bg-gradient-to-r from-[#4a0812] via-[#720917] to-[#4a0812] rounded-2xl p-6 sm:p-8 text-white mb-6 shadow-lg relative overflow-hidden">
+            <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div>
+                    <span class="bg-white/15 text-rose-100 border border-white/20 text-[10px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                        Controle Operacional Diário
+                    </span>
+                    <h2 class="text-2xl sm:text-3xl font-bold mt-3 font-serif-brand tracking-wide">Relatório de Cumprimento de Prazos — Base SE</h2>
+                    <p class="text-rose-100/90 mt-2 text-sm sm:text-base max-w-2xl font-light">
+                        Demonstrativo de eficiência, aproveitamento de pauta e auditoria analítica de compromissos referente à pauta de <strong>09/06/2026</strong>.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-2.5 self-start md:self-auto no-print">
+                    <button onclick="window.print()" class="bg-white/15 hover:bg-white/25 text-white px-5 py-2.5 rounded-lg text-sm font-semibold border border-white/15 transition flex items-center gap-2 shadow-md">
+                        <i data-lucide="printer" class="w-4 h-4"></i> Imprimir Relatório
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-stone-200 flex items-center justify-between print-card">
+                <div>
+                    <p class="text-[10px] font-bold text-stone-400 uppercase tracking-wider">Compromissos Totais</p>
+                    <h3 class="text-3xl font-bold text-stone-900 mt-1">80</h3>
+                    <p class="text-xs text-stone-500 mt-1">100% da pauta ativa</p>
+                </div>
+                <div class="p-3 bg-stone-50 text-stone-600 rounded-lg">
+                    <i data-lucide="calendar" class="w-6 h-6"></i>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-stone-200 flex items-center justify-between print-card">
+                <div>
+                    <p class="text-[10px] font-bold text-stone-400 uppercase tracking-wider">Cumpridos</p>
+                    <h3 class="text-3xl font-bold text-stone-950 mt-1">66</h3>
+                    <p class="text-xs text-emerald-600 mt-1 font-semibold">82.5% cumpridos direto</p>
+                </div>
+                <div class="p-3 bg-emerald-50 text-emerald-600 rounded-lg">
+                    <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-stone-200 flex items-center justify-between print-card">
+                <div>
+                    <p class="text-[10px] font-bold text-stone-400 uppercase tracking-wider">Cancelados Autorizados</p>
+                    <h3 class="text-3xl font-bold text-stone-900 mt-1">14</h3>
+                    <p class="text-xs text-[#720917] mt-1 font-semibold">Inclui desvios sob revisão</p>
+                </div>
+                <div class="p-3 bg-[#fcf5f6] text-[#720917] rounded-lg">
+                    <i data-lucide="x-circle" class="w-6 h-6"></i>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-5 shadow-sm border border-stone-200 flex items-center justify-between print-card">
+                <div>
+                    <p class="text-[10px] font-bold text-stone-400 uppercase tracking-wider">Pendências de Pauta</p>
+                    <h3 class="text-3xl font-bold text-stone-900 mt-1">0</h3>
+                    <p class="text-xs text-stone-400 mt-1 font-semibold">Agenda local limpa</p>
+                </div>
+                <div class="p-3 bg-stone-50 text-stone-400 rounded-lg">
+                    <i data-lucide="clock" class="w-6 h-6"></i>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-[#720917] to-[#4a0812] text-white rounded-xl p-5 shadow-md flex items-center justify-between print-card">
+                <div>
+                    <p class="text-[10px] font-bold text-rose-100 uppercase tracking-wider">Produtividade Tratada</p>
+                    <h3 class="text-4xl font-extrabold mt-1">93.8%</h3>
+                    <p class="text-xs text-rose-200 mt-1">Desvio seletivo (Ítalo)</p>
+                </div>
+                <div class="p-3 bg-white/10 text-white rounded-lg">
+                    <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-amber-50/70 border-l-4 border-amber-600 p-5 rounded-r-xl shadow-sm mb-6">
+            <div class="flex items-start">
+                <div class="flex-shrink-0 text-amber-700 mt-0.5">
+                    <i data-lucide="alert-octagon" class="w-5 h-5"></i>
+                </div>
+                <div class="ml-3">
+                    <h3 class="text-sm font-bold text-amber-800 font-serif-brand">Parecer de Auditoria Interna: Desvio de Fluxo Operacional (Carteira Ítalo Rodrigues)</h3>
+                    <p class="text-xs text-stone-600 mt-1 leading-relaxed">
+                        Durante a consolidação da pauta de <strong>09/06/2026</strong>, a coordenação identificou que o advogado <strong>Ítalo José Almeida Rodrigues</strong> realizou o cancelamento de <strong>5 compromissos processuais sem o devido alinhamento prévio</strong> e sem a inserção imediata das respectivas justificativas no sistema <strong>LegalOne</strong>, divergindo da diretriz metodológica fixada para a Base SE. 
+                        <strong>Ação Corretiva:</strong> O respectivo feedback formal já foi aplicado ao profissional e foi determinada a inclusão imediata das justificativas de saneamento. Os prazos encontram-se sinalizados sob revisão na tabela analítica inferior. Os demais 75 prazos da equipe foram cumpridos em estrita conformidade, mantendo o aproveitamento geral em <strong>93,8%</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-stone-200 flex flex-col justify-between print-card">
+                <div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="font-bold text-stone-900 font-serif-brand">Distribuição de Status (09/06)</h4>
+                        <span class="text-xs bg-stone-100 text-stone-600 px-2 py-1 rounded">80 Tarefas</span>
+                    </div>
+                    <div class="chart-container flex items-center justify-center">
+                        <canvas id="overviewDonutChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-stone-200 lg:col-span-2 flex flex-col justify-between print-card">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+                    <div>
+                        <h4 class="font-bold text-stone-900 font-serif-brand">Desempenho da Equipe por Carteira</h4>
+                        <p class="text-xs text-stone-500">Prazos Cumpridos, Cancelamentos Homologados e Itens sob Revisão</p>
+                    </div>
+                    <span class="bg-[#fcf5f6] text-[#720917] border border-rose-100 text-[11px] font-bold px-2.5 py-1 rounded-full text-center font-semibold">
+                        Aproveitamento Individual de Pauta
+                    </span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 items-center">
+                    <div class="md:col-span-3 chart-container" style="height: 260px;">
+                        <canvas id="teamComparisonChart"></canvas>
+                    </div>
+                    
+                    <div class="md:col-span-1 space-y-3 bg-stone-50/50 p-4 rounded-xl border border-stone-100">
+                        <h5 class="text-[10px] font-bold text-stone-400 uppercase tracking-wider mb-2">Aproveitamento</h5>
+                        <div class="space-y-2.5">
+                            <div class="flex items-center justify-between text-xs border-b border-stone-200/50 pb-1.5">
+                                <span class="font-medium text-stone-700">Joyce</span>
+                                <span class="font-extrabold text-emerald-600">100%</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs border-b border-stone-200/50 pb-1.5">
+                                <span class="font-medium text-stone-700">Ítalo</span>
+                                <span class="font-extrabold text-amber-600">75.0%*</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs border-b border-stone-200/50 pb-1.5">
+                                <span class="font-medium text-stone-700">Karen</span>
+                                <span class="font-extrabold text-emerald-600">100%</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs border-b border-stone-200/50 pb-1.5">
+                                <span class="font-medium text-stone-700">Maria</span>
+                                <span class="font-extrabold text-emerald-600">100%</span>
+                            </div>
+                            <div class="flex items-center justify-between text-xs border-b border-stone-200/50 pb-1.5">
+                                <span class="font-medium text-stone-700">Isabele</span>
+                                <span class="font-extrabold text-emerald-600">100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-stone-200 overflow-hidden mb-6 print-card">
+            <div class="p-6 border-b border-stone-100">
+                <h4 class="font-bold text-stone-900 text-lg font-serif-brand">Quadro de Eficiência por Carteira Individual (09/06)</h4>
+                <p class="text-stone-500 text-xs mt-1">Acompanhamento granular das pautas e índices de aproveitamento individual auditados</p>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-stone-50/50 text-stone-500 font-semibold border-b border-stone-100 text-xs uppercase">
+                            <th class="p-4 pl-6">Advogado(a)</th>
+                            <th class="p-4 text-center">Recebidos</th>
+                            <th class="p-4 text-center">Cumpridos</th>
+                            <th class="p-4 text-center">Cancelados</th>
+                            <th class="p-4 text-center">Pendentes (Local)</th>
+                            <th class="p-4 pr-6 text-right">Produtividade Individual (Tratamento)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-stone-100">
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-xs">JS</div>
+                                <span>Joyce da Silva</span>
+                            </td>
+                            <td class="p-4 text-center font-semibold text-stone-700">18</td>
+                            <td class="p-4 text-center text-emerald-600 font-semibold">13</td>
+                            <td class="p-4 text-center text-[#720917] font-semibold">5</td>
+                            <td class="p-4 text-center text-stone-400">0</td>
+                            <td class="p-4 pr-6 text-right font-extrabold text-emerald-600">100%</td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition bg-amber-50/20">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-xs">IR</div>
+                                <span>Ítalo José Almeida Rodrigues</span>
+                            </td>
+                            <td class="p-4 text-center font-semibold text-stone-700">20</td>
+                            <td class="p-4 text-center text-emerald-600 font-semibold">15</td>
+                            <td class="p-4 text-center text-[#720917] font-semibold">5</td>
+                            <td class="p-4 text-center text-stone-400">0</td>
+                            <td class="p-4 pr-6 text-right font-extrabold text-amber-600">75.0%*</td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-xs">KS</div>
+                                <span>Karen Thaiany Puresa de Oliveira Silva</span>
+                            </td>
+                            <td class="p-4 text-center font-semibold text-stone-700">15</td>
+                            <td class="p-4 text-center text-emerald-600 font-semibold">15</td>
+                            <td class="p-4 text-center text-stone-400">0</td>
+                            <td class="p-4 text-center text-stone-400">0</td>
+                            <td class="p-4 pr-6 text-right font-extrabold text-emerald-600">100%</td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-xs">MS</div>
+                                <span>Maria Joanny dos Santos Silva</span>
+                            </td>
+                            <td class="p-4 text-center font-semibold text-stone-700">10</td>
+                            <td class="p-4 text-center text-emerald-600 font-semibold">8</td>
+                            <td class="p-4 text-center text-[#720917] font-semibold">2</td>
+                            <td class="p-4 text-center text-stone-400">0</td>
+                            <td class="p-4 pr-6 text-right font-extrabold text-emerald-600">100%</td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-xs">IS</div>
+                                <span>Isabele Cavalcanti de Souza</span>
+                            </td>
+                            <td class="p-4 text-center font-semibold text-stone-700">17</td>
+                            <td class="p-4 text-center text-emerald-600 font-semibold">15</td>
+                            <td class="p-4 text-center text-[#720917] font-semibold">2</td>
+                            <td class="p-4 text-center text-stone-400">0</td>
+                            <td class="p-4 pr-6 text-right font-extrabold text-emerald-600">100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-stone-200 p-6 print-card">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-stone-100">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="p-2 bg-[#fcf5f6] text-[#720917] rounded-lg">
+                            <i data-lucide="file-spreadsheet" class="w-5 h-5"></i>
+                        </span>
+                        <h4 class="font-bold text-stone-900 text-lg font-serif-brand">Justificativas Analíticas de Cancelamento</h4>
+                    </div>
+                    <p class="text-stone-500 text-xs mt-1">
+                        Histórico de auditoria do dia 09/06/2026 devidamente homologado ou sob revisão da coordenação
+                    </p>
+                </div>
+                <div class="relative no-print">
+                    <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-stone-400 pointer-events-none">
+                        <i data-lucide="search" class="w-4 h-4"></i>
+                    </span>
+                    <input id="search-justificativas" onkeyup="filterJustificativasTable()" type="text" placeholder="Buscar por advogado, processo..." class="bg-stone-50 border border-stone-200 text-xs rounded-lg pl-9 pr-4 py-2 w-full sm:w-64 focus:outline-none focus:ring-1 focus:ring-[#720917]">
+                </div>
+            </div>
+            <div class="overflow-x-auto mt-6">
+                <table id="table-justificativas" class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-stone-50/50 text-stone-500 font-semibold border-b border-stone-200 text-xs uppercase">
+                            <th class="p-4 pl-6">Advogado(a)</th>
+                            <th class="p-4">Processo / Identificação</th>
+                            <th class="p-4">Tarefa Original</th>
+                            <th class="p-4">Justificativa Saneadora (Auditada pela Coordenação)</th>
+                            <th class="p-4 pr-6 text-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-stone-100">
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-[10px]">MS</div>
+                                <span>Maria Joanny dos Santos Silva</span>
+                            </td>
+                            <td class="p-4 font-mono text-xs text-[#720917]">202554001814</td>
+                            <td class="p-4 text-xs font-semibold text-stone-700">Manifestação sobre proposta de honorários de perito</td>
+                            <td class="p-4 text-xs text-stone-600 leading-relaxed">Já houve manifestação do banco sobre os honorários periciais, inclusive com a comprovação do pagamento juntada em 09/06/2026. Perda de objeto.</td>
+                            <td class="p-4 pr-6 text-center">
+                                <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded">
+                                    <i data-lucide="check" class="w-3 h-3"></i> Homologado
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-[10px]">MS</div>
+                                <span>Maria Joanny dos Santos Silva</span>
+                            </td>
+                            <td class="p-4 font-mono text-xs text-[#720917]">202589101664</td>
+                            <td class="p-4 text-xs font-semibold text-stone-700">Produção de Prova</td>
+                            <td class="p-4 text-xs text-stone-600 leading-relaxed">Solicitada a produção de provas (perícia grafotécnica) em 06/03/2026. Prazo aberto para manifestação específica da parte autora. Sem efeito para o réu.</td>
+                            <td class="p-4 pr-6 text-center">
+                                <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded">
+                                    <i data-lucide="check" class="w-3 h-3"></i> Homologado
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-[10px]">JS</div>
+                                <span>Joyce da Silva</span>
+                            </td>
+                            <td class="p-4 font-mono text-xs text-[#720917]">202555505483</td>
+                            <td class="p-4 text-xs font-semibold text-stone-700">Contrarrazões</td>
+                            <td class="p-4 text-xs text-stone-600 leading-relaxed">Os autos já foram remetidos ao segundo grau. Prazo precluso. Memoriais devidamente cadastrados.</td>
+                            <td class="p-4 pr-6 text-center">
+                                <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded">
+                                    <i data-lucide="check" class="w-3 h-3"></i> Homologado
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-[10px]">JS</div>
+                                <span>Joyce da Silva</span>
+                            </td>
+                            <td class="p-4 font-mono text-xs text-[#720917]">202555505287</td>
+                            <td class="p-4 text-xs font-semibold text-stone-700">Contrarrazões</td>
+                            <td class="p-4 text-xs text-stone-600 leading-relaxed">Os autos já foram remetidos ao segundo grau. Prazo precluso. Memoriais devidamente cadastrados.</td>
+                            <td class="p-4 pr-6 text-center">
+                                <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded">
+                                    <i data-lucide="check" class="w-3 h-3"></i> Homologado
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-[10px]">JS</div>
+                                <span>Joyce da Silva</span>
+                            </td>
+                            <td class="p-4 font-mono text-xs text-[#720917]">0010896-38.2025.8.25.0040</td>
+                            <td class="p-4 text-xs font-semibold text-stone-700">Produção de prova</td>
+                            <td class="p-4 text-xs text-stone-600 leading-relaxed">Manifestação acerca de novas provas já apresentada anteriormente no feito. Inexistência de novos subsídios.</td>
+                            <td class="p-4 pr-6 text-center">
+                                <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded">
+                                    <i data-lucide="check" class="w-3 h-3"></i> Homologado
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-[10px]">JS</div>
+                                <span>Joyce da Silva</span>
+                            </td>
+                            <td class="p-4 font-mono text-xs text-[#720917]">202563002167</td>
+                            <td class="p-4 text-xs font-semibold text-stone-700">Produção de prova</td>
+                            <td class="p-4 text-xs text-stone-600 leading-relaxed">Quesitos periciais técnicos já apresentados anteriormente nos autos pela instituição financeira. Duplicidade de fluxo.</td>
+                            <td class="p-4 pr-6 text-center">
+                                <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded">
+                                    <i data-lucide="check" class="w-3 h-3"></i> Homologado
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-[10px]">JS</div>
+                                <span>Joyce da Silva</span>
+                            </td>
+                            <td class="p-4 font-mono text-xs text-[#720917]">202510401817</td>
+                            <td class="p-4 text-xs font-semibold text-stone-700">Despacho de Apresentação</td>
+                            <td class="p-4 text-xs text-stone-600 leading-relaxed">O despacho pedia o extrato, no entanto o extrato continha movimentações que não foram feitas pelo autor, visto que ele estava sem acesso à conta. Cancelamento estratégico de defesa.</td>
+                            <td class="p-4 pr-6 text-center">
+                                <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded">
+                                    <i data-lucide="check" class="w-3 h-3"></i> Homologado
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-[10px]">IS</div>
+                                <span>Isabele Cavalcanti de Souza</span>
+                            </td>
+                            <td class="p-4 font-mono text-xs text-[#720917]">202686001490</td>
+                            <td class="p-4 text-xs font-semibold text-stone-700">Juntar Documentos</td>
+                            <td class="p-4 text-xs text-stone-600 leading-relaxed">DOCUMENTOS JÁ JUNTADOS COM A CONTESTAÇÃO. NÃO HÁ MAIS NECESSIDADE DE NOVA JUNTADA DE DOCUMENTOS. Saneado.</td>
+                            <td class="p-4 pr-6 text-center">
+                                <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded">
+                                    <i data-lucide="check" class="w-3 h-3"></i> Homologado
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-stone-100 text-[#720917] flex items-center justify-center font-bold text-[10px]">IS</div>
+                                <span>Isabele Cavalcanti de Souza</span>
+                            </td>
+                            <td class="p-4 font-mono text-xs text-[#720917]">202373100748</td>
+                            <td class="p-4 text-xs font-semibold text-stone-700">Julgamento Antecipado</td>
+                            <td class="p-4 text-xs text-stone-600 leading-relaxed">Compromisso de monitoramento cadastrado apenas para conferência de diário. Não há do que se manifestar processualmente.</td>
+                            <td class="p-4 pr-6 text-center">
+                                <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded">
+                                    <i data-lucide="check" class="w-3 h-3"></i> Homologado
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-stone-50/50 transition bg-amber-50/30">
+                            <td class="p-4 pl-6 font-medium text-stone-900 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center font-bold text-[10px]">IR</div>
+                                <span>Ítalo José A. Rodrigues</span>
+                            </td>
+                            <td class="p-4 font-mono text-xs text-amber-700">Carteira Ítalo (5 Prazos)</td>
+                            <td class="p-4 text-xs font-semibold text-stone-700">Cancelamentos em Lote</td>
+                            <td class="p-4 text-xs text-amber-900 font-medium leading-relaxed italic">Cancelamentos executados sem alinhamento prévio com a coordenação e sem inserção de fundamentação no LegalOne. Feedback imediato aplicado; pendente de saneamento pelo advogado.</td>
+                            <td class="p-4 pr-6 text-center">
+                                <span class="inline-flex items-center gap-1 bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-1 rounded">
+                                    <i data-lucide="alert-circle" class="w-3 h-3"></i> Sob Revisão
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white text-stone-400 py-6 border-t border-stone-200 mt-12 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs space-y-2">
+            <p class="font-serif-brand tracking-widest text-stone-700 font-bold uppercase">Monteiro Nascimento Advogados</p>
+            <p>Relatório de Desempenho Diário • Controle Operacional • Base Sergipe</p>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar ícones
+        lucide.createIcons();
+
+        // 1. Gráfico de Rosca (Distribuição Geral de Status)
+        const donutCtx = document.getElementById('overviewDonutChart').getContext('2d');
+        new Chart(donutCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Cumpridos', 'Cancelados Homologados', 'Cancelados sob Revisão'],
+                datasets: [{
+                    data: [66, 9, 5],
+                    backgroundColor: ['#10b981', '#720917', '#d97706'],
+                    hoverOffset: 4,
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            boxWidth: 12,
+                            font: { size: 11, weight: '500' }
+                        }
+                    }
+                },
+                cutout: '72%'
+            }
+        });
+
+        // 2. Gráfico de Barras Empilhadas (Equipe por Carteira)
+        const barCtx = document.getElementById('teamComparisonChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Joyce', 'Ítalo', 'Karen', 'Maria', 'Isabele'],
+                datasets: [
+                    {
+                        label: 'Cumpridos',
+                        data: [13, 15, 15, 8, 15],
+                        backgroundColor: '#10b981',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Cancelados Autorizados',
+                        data: [5, 0, 0, 2, 2],
+                        backgroundColor: '#720917',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Cancelados sob Revisão',
+                        data: [0, 5, 0, 0, 0],
+                        backgroundColor: '#d97706',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { stacked: true, grid: { display: false } },
+                    y: { stacked: true, grid: { color: '#f5f5f5' } }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { boxWidth: 10, font: { size: 10 } }
+                    }
+                }
+            }
+        });
+
+        // 3. Sistema de Filtro de Busca Dinâmico para as Justificativas
+        function filterJustificativasTable() {
+            const input = document.getElementById("search-justificativas");
+            const filter = input.value.toLowerCase();
+            const table = document.getElementById("table-justificativas");
+            const tr = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < tr.length; i++) {
+                let showRow = false;
+                const cells = tr[i].getElementsByTagName("td");
+                
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j]) {
+                        const txtValue = cells[j].textContent || cells[j].innerText;
+                        if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                            showRow = true;
+                            break;
+                        }
+                    }
+                }
+                tr[i].style.display = showRow ? "" : "none";
+            }
+        }
+    </script>
+</body>
+</html>
